@@ -8,6 +8,8 @@
  */
 
 var React = require('react');
+var TodoActions = require('../actions/TodoActions');
+
 var ReactPropTypes = React.PropTypes;
 
 var ENTER_KEY_CODE = 13;
@@ -64,6 +66,9 @@ var TodoTextInput = React.createClass({
     this.setState({
       value: event.target.value
     });
+      
+    console.log("blocking typed character!");
+    TodoActions.updateText(4712, "text");  
   },
 
   /**

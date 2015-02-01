@@ -16,7 +16,12 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var _todos = {};
+var _todos = {
+        4711: {id: 4711,
+        complete: false,
+        text: "update me"
+        }
+  };
 
 /**
  * Create a TODO item.
@@ -151,6 +156,10 @@ AppDispatcher.register(function(action) {
       break;
 
     case TodoConstants.TODO_UPDATE_TEXT:
+          console.log("UPDATE TEXT ACTION IN STORE!!!");
+          TodoStore.emitChange();
+          break;
+          
       text = action.text.trim();
       if (text !== '') {
         update(action.id, {text: text});

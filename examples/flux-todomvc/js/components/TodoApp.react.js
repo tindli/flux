@@ -42,6 +42,12 @@ var TodoApp = React.createClass({
     TodoStore.removeChangeListener(this._onChange);
   },
 
+  shouldComponentUpdate: function(nextProps, nextState) {
+    var updateMode = false;
+    console.log("shouldComponentUpdate() in TodoApp set to " + updateMode);
+    return updateMode;
+  },
+
   /**
    * @return {object}
    */
@@ -62,6 +68,7 @@ var TodoApp = React.createClass({
    * Event handler for 'change' events coming from the TodoStore
    */
   _onChange: function() {
+      console.log("_onChange() fired - fetching data from store");
     this.setState(getTodoState());
   }
 
